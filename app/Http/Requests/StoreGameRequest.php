@@ -18,7 +18,11 @@ class StoreGameRequest extends FormRequest
             'description' => ['required', 'string', 'max:65000'],
             'image' => ['required', 'string', 'max:255'],
             'release_date' => ['required','date_format:Y-m-d'],
-            'publisher_id' => ['required', 'integer', 'exists:publishers,id',]
+            'publisher_id' => ['required', 'integer', 'exists:publishers,id'],
+            'console_ids' => ['required', 'array'],
+            'console_ids.*' => ['integer', 'exists:consoles,id'],
+            'genre_ids'=>['required', 'array'],
+            'genre_ids.*' => ['integer', 'exists:genres,id'],
         ];
     }
 }

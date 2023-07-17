@@ -20,7 +20,7 @@ class ConsoleFactory extends Factory
         return [
             'name' => fake()->name(),
             'description' => fake()->paragraph(),
-            'image' => fake()->word(),
+            'image' => fake()->imageUrl(),
             'release_date' => fake()->date(),
             'company_id' => Company::factory()->create(),
 

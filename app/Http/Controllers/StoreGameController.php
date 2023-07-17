@@ -11,7 +11,12 @@ class StoreGameController extends Controller
 {
     public function __invoke(StoreGameRequest $storeGameRequest)
     {
-        $game = Game::create($storeGameRequest->validated());
+        $game = Game::create($storeGameRequest->except('console_ids','genre_ids'));
+
+        $game->consoles()->attach($storeGameRequest->console_ids);
+        $game->genres()->attach($storeGameRequest->genre_ids);
+
+
         return GameResource::make($game);
     }
 }

@@ -18,7 +18,7 @@ class PublisherFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'image' => fake()->word(),
+            'image' => fake()->imageUrl(),
             'founding_date' => fake()->date(),
         ];
     }

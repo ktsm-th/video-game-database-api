@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Game;
 use App\Models\Publisher;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -20,7 +21,7 @@ class GameFactory extends Factory
         return [
             'name' => fake()->name(),
             'description' => fake()->paragraph(),
-            'image' => fake()->word(),
+            'image' => fake()->imageUrl(),
             'release_date' => fake()->date(),
             'publisher_id' => Publisher::factory()->create(),
         ];
