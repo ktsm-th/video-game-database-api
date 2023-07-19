@@ -20,7 +20,7 @@ class GameResource extends JsonResource
             'description' => $this->description,
             'image' => $this->image,
             'release_date' => $this->release_date,
-            'publisher_id' => $this->publisher_id,
+            'publisher' => PublisherResource::make($this->publisher),
             'consoles' => ConsoleResource::collection($this->consoles),
             'genres'=> GenreResource::collection($this->genres),
         ];
