@@ -20,6 +20,7 @@ class ConsoleResource extends JsonResource
             'description' => $this->description,
             'image' => $this->image,
             'release_date' => $this->release_date,
+            'games' => GameLiteResource::collection($this->games),
             'company' => CompanyResource::make($this->company),
         ];
     }

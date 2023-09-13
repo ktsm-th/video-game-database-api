@@ -19,6 +19,7 @@ class PublisherResource extends JsonResource
             'name' => $this->name,
             'image' => $this->image,
             'founding_date' => $this->founding_date,
+            'games' => GameLiteResource::collection($this->games),
         ];
     }
 }

@@ -43,7 +43,6 @@ Route::prefix('games')->group(function () {
     Route::patch('/{game}', UpdateGameController::class);
     Route::delete('/{game}', DeleteGameController::class);
     Route::get('/publishers/{publisher}', ViewGameByPublisherController::class);
-    //Route::get('/consoles/{console}', ViewGameByConsoleController::class);
 });
 
 
@@ -54,6 +53,7 @@ Route::prefix('consoles')->group(function () {
     Route::patch('/{console}', UpdateConsoleController::class);
     Route::delete('/{console}', DeleteConsoleController::class);
     Route::get('/companies/{company}', ViewConsoleByCompanyController::class);
+    Route::get('/{console}/games', ViewGameByConsoleController::class);
 });
 
 Route::prefix('companies')->group(function () {
