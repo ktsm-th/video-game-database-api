@@ -16,7 +16,7 @@ class StoreConsoleRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string', 'max:65000'],
-            'image' => ['required', 'string', 'max:255'],
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10248',
             'release_date' => ['required','date_format:Y-m-d'],
             'company_id' => ['required', 'integer', 'exists:companies,id',]
         ];

@@ -11,7 +11,16 @@ class StorePublisherController extends Controller
 {
     public function __invoke(StorePublisherRequest $storePublisherRequest)
     {
-        $publisher = Publisher::create($storePublisherRequest->validated());
-        return PublisherResource::make($publisher);
+        $fileName = time() . '.' . $storePublisherRequest->image->extension();
+        $storePublisherRequest->image->storeAs('public/images/publishers', $fileName);
+
+        $publisher = Publisher::create(
+            array_merge(
+                $storePublisherRequest->except('image'),
+                [
+                    'image' => asset('storage/images/publishers/' . $fileName),
+                ],
+            )
+        );        return PublisherResource::make($publisher);
     }
 }

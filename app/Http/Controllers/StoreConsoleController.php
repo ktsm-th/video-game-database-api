@@ -11,7 +11,16 @@ class StoreConsoleController extends Controller
 {
     public function __invoke(StoreConsoleRequest $storeConsoleRequest)
     {
-        $console = Console::create($storeConsoleRequest->validated());
-        return ConsoleResource::make($console);
+        $fileName = time() . '.' . $storeConsoleRequest->image->extension();
+        $storeConsoleRequest->image->storeAs('public/images/consoles', $fileName);
+
+        $console = Console::create(
+            array_merge(
+                $storeConsoleRequest->except('image'),
+                [
+                    'image' => asset('storage/images/consoles/' . $fileName),
+                ],
+            )
+        );        return ConsoleResource::make($console);
     }
 }

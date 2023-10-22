@@ -16,7 +16,7 @@ class StoreGameRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string', 'max:65000'],
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10248',
             'release_date' => ['required','date_format:Y-m-d'],
             'publisher_id' => ['required', 'integer', 'exists:publishers,id'],
             'console_ids' => ['required', 'array'],

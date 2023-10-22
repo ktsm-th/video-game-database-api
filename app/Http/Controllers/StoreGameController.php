@@ -12,13 +12,13 @@ class StoreGameController extends Controller
     public function __invoke(StoreGameRequest $storeGameRequest)
     {
         $fileName = time() . '.' . $storeGameRequest->image->extension();
-        $image = $storeGameRequest->image->storeAs('public/images', $fileName);
+        $storeGameRequest->image->storeAs('public/images/games', $fileName);
 
         $game = Game::create(
             array_merge(
                 $storeGameRequest->except('console_ids','genre_ids', 'image'),
                 [
-                    'image' => asset('storage/images/' . $fileName),
+                    'image' => asset('storage/images/games/' . $fileName),
                 ],
             )
         );

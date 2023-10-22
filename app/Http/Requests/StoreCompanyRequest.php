@@ -15,7 +15,7 @@ class StoreCompanyRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'image' => ['required', 'string', 'max:255'],
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10248',
             'founding_date' => ['required','date_format:Y-m-d'],
         ];
     }

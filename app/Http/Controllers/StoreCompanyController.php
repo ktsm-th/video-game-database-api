@@ -11,7 +11,16 @@ class StoreCompanyController extends Controller
 {
     public function __invoke(StoreCompanyRequest $storeCompanyRequest)
     {
-        $company = Company::create($storeCompanyRequest->validated());
-        return CompanyResource::make($company);
+        $fileName = time() . '.' . $storeCompanyRequest->image->extension();
+        $storeCompanyRequest->image->storeAs('public/images/companies', $fileName);
+
+        $company = Company::create(
+            array_merge(
+                $storeCompanyRequest->except('image'),
+                [
+                    'image' => asset('storage/images/companies/' . $fileName),
+                ],
+            )
+        );        return CompanyResource::make($company);
     }
 }
